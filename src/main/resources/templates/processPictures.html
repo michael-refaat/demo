@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Unprocessed Pictures</title>
+
+</head>
+<body>
+
+    <div>
+        <a href="/logout">LogOut</a>
+        <h4 style="margin-right: 300px; color: gray;">Reload the Page if needed, because there is No AJAX :)</h4>
+    </div>
+
+    <div>
+
+        <h3>List of Pictures</h3>
+
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="picture:${pictures}">
+                <td th:text="${picture.id}"></td>
+                <td th:text="${picture.name}"></td>
+
+                <div th:if="${picture.action != 'Rejected'}">
+                    <td><img style="width: 50px; height: 50px;" th:src="@{'/showUnProcessedPicture/'+${picture.id}}"></td>
+                    <td><a target="_blank" th:href="@{'/processPictures/'+${picture.id}}">Process it</a></td>
+                </div>
+
+                <div th:if="${picture.action == 'Rejected'}">
+                    <td></td>
+                    <td><p style="color: red;">Rejected</p></td>
+                </div>
+
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</body>
+</html>

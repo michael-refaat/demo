@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Accepted Pictures</title>
+
+</head>
+<body>
+
+    <div th:if="${role == 'none'}">
+
+        <a href="/login">Login</a>
+
+        <a href="/registration">Registration</a>
+
+    </div>
+
+    <div th:if="${role == 'user'}">
+
+        <a href="/logout">LogOut</a>
+
+        <a href="/uploadPicture">Upload Picture</a>
+
+    </div>
+
+    <div>
+
+        <h1>Accepted Pictures</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th></th>
+                    <th>Name</th>
+                    <th></th>
+                    <th>URL</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="picture:${pictures}">
+                    <td th:text="${picture.id}"></td>
+                    <td></td>
+                    <td th:text="${picture.name}"></td>
+                    <td></td>
+                    <td><a th:href="@{'/showPicture/'+${picture.id}}" th:text="@{'/showPicture/'+${picture.id}}"></a></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</body>
+</html>

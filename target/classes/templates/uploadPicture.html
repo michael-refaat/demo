@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Upload Picture</title>
+
+</head>
+<body>
+
+    <div>
+        <a href="/">Show Accepted Pictures</a>
+        <a href="/logout">LogOut</a>
+    </div>
+
+    <div>
+
+        <form method="post" th:action=@{/uploadPicture} enctype="multipart/form-data">
+
+            <div>
+
+                <p>Living Thing <input type="radio" name="category" value="livingthing" checked></p>
+
+                <p>Machine <input type="radio" name="category" value="machine"></p>
+
+                <p>Nature <input type="radio" name="category" value="nature"></p>
+
+            </div>
+
+            <p>Description <input type="text" name="description" style="width:400px;" required></p>
+
+            <p><input type="file" name="file" accept=".jpg,.png,.gif" required><span style="color: blue;">Maximum 2MB</span></p>
+
+            <p><input type="submit" value="Upload"></p>
+
+        </form>
+
+    </div>
+
+</body>
+</html>
